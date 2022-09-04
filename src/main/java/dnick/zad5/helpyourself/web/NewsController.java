@@ -29,7 +29,7 @@ public class NewsController {
         this.userService = userService;
     }
 
-    @GetMapping( "home")
+    @GetMapping( "/home")
     public String showHome() {
         return "home";
     }
@@ -46,7 +46,7 @@ public class NewsController {
         model.addAttribute("totalItems", totalItems);
         model.addAttribute("news", news);
 
-        return "/explore";
+        return "explore";
     }
 
     @GetMapping("/explore")
