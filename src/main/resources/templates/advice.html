@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>advice</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"></script>
+</head>
+<body style="background-image: url('https://media.istockphoto.com/photos/colorful-from-sunrise-picture-id524549300?b=1&k=20&m=524549300&s=170667a&w=0&h=XMRhfZ295TQqyfENhtvuUtMjpYlGJs9JxV9S59ty2OA='); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+<nav class="navbar navbar-expand-lg" style="background: #edc2eb;">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item ml-5">
+                    <a class="nav-link" href="/explore">Explore</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/advice">Advice</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/diary">Diary</a>
+                </li>
+                <li class="nav-item " style="position:absolute; right: 0">
+                    <a class="nav-link " href="/logout">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div th:if="${flag=='first'}" class="d-flex justify-content-center">
+        <div><h3>How do you feel?</h3>
+            <br>
+            <form th:action="@{/advice}" method="get">
+                <div><input type="radio" name="first" th:value="stress"> stressed/anxious</div>
+                <div><input type="radio" name="first" th:value="sadness"> sad/depressed</div>
+                <button id="submit" type="submit">Next</button>
+            </form>
+        </div>
+    </div>
+    <div th:if="${flag=='second'}" class="d-flex justify-content-center">
+        <div><h3 class="text-center">What is the reason for your <span th:text="${second}"></span>?</h3>
+            <br>
+            <form th:action="@{/advice}" method="get">
+                <div><input type="radio" name="second" th:value="family"> family</div>
+                <div><input type="radio" name="second" th:value="colleagues"> work</div>
+                <div><input type="radio" name="second" th:value="friends"> friends</div>
+                <div><input type="radio" name="second" th:value="partner"> partner</div>
+                <button id="submit" type="submit">Next</button>
+            </form>
+        </div>
+    </div>
+    <div th:if="${flag=='third'}" class="d-flex justify-content-center">
+        <div><h3 class="text-center">How do you feel about your <span th:text="${third}"></span>?</h3>
+            <br>
+            <form th:action="@{/advice}" method="get">
+                <div th:if="${third=='family'}"><input type="radio" name="third" th:value="family1"> I feel like they
+                    dont
+                    love me
+                </div>
+                <div th:if="${third=='family'}"><input type="radio" name="third" th:value="family2"> I feel like they
+                    dont
+                    value me
+                </div>
+                <div th:if="${third=='family'}"><input type="radio" name="third" th:value="family3"> They are too bossy
+                </div>
+                <div th:if="${third=='colleagues'}"><input type="radio" name="third" th:value="colleagues1"> They dont
+                    want
+                    to communicate with me
+                </div>
+                <div th:if="${third=='colleagues'}"><input type="radio" name="third" th:value="colleagues2"> I feel like
+                    they dont value me
+                </div>
+                <div th:if="${third=='colleagues'}"><input type="radio" name="third" th:value="colleagues3"> They are
+                    too
+                    bossy
+                </div>
+                <div th:if="${third=='friends'}"><input type="radio" name="third" th:value="friends1"> I feel like they
+                    dont
+                    love me
+                </div>
+                <div th:if="${third=='friends'}"><input type="radio" name="third" th:value="friends2"> I feel like they
+                    dont
+                    value me
+                </div>
+                <div th:if="${third=='friends'}"><input type="radio" name="third" th:value="friends3"> I feel like Im
+                    the
+                    odd one
+                </div>
+                <div th:if="${third=='partner'}"><input type="radio" name="third" th:value="partner1"> I feel like they
+                    dont
+                    love me
+                </div>
+                <div th:if="${third=='partner'}"><input type="radio" name="third" th:value="partner2"> I feel like they
+                    dont
+                    value me
+                </div>
+                <div th:if="${third=='partner'}"><input type="radio" name="third" th:value="partner3"> I feel like Im
+                    not
+                    enough
+                </div>
+
+                <button id="submit" type="submit">Next</button>
+            </form>
+        </div>
+    </div>
+    <div th:if="${flag=='fourth'}" class="bg-light" style="border: 10px solid white">
+        <div th:if="${fourth=='family1'}">
+            Realise that blood isn’t what makes somebody ‘family’.
+            “Your blood is your family” is utter bullshit.
+            The people who care about you, the ones who nurture you, the ones who don’t mistreat you is ‘family’.
+            Care only for the people who cares for you, not for the ones that society makes you think that you are
+            supposed to care for.
+            So, stop worrying about it. Find people who actually cares for you and call them family!
+        </div>
+        <div th:if="${fourth=='family2'}">
+            You must politely distance yourself ; if you want, love them from afar. Start being your own best friend.
+            Take good care of yourself, emotionally too. Give honor to your parents, no matter what their difficulties
+            may have been. Get plenty of rest,
+            eat breakfast, dress as well as you can. Maybe go to a house of prayer once a week. Studies show this is a
+            very healthy thing to do.
+            Let your new wings dry off and start to explore how to fly. Learn as much as you can before liftoff and take
+            the chance! Choose your life.
+            Enjoy giving hospitality especially to those who can use a nice meal and kindly ear. As you give to others,
+            love will come back to you beyond measure;
+            you'd be surprised how many people are alone. Bless you dear friend, whomever you are or will be! I have
+            been rescued by giving an ear to others. Good luck along your journey. May you find happiness, peace and
+            joy!
+        </div>
+        <div th:if="${fourth=='family3'}">
+            First, Respect their( 'elders' , as you mentioned in your question) choices, decree and decision which they
+            have taken for yourself.
+            Accept the fact that they are right but in their perspective and they are your well wisher that's why they
+            are compelling you to follow their decision.
+            They will always choose best for yourself, and the decision which they forced may be the best in their
+            belief.
+            But if we are not concordant or simply don't agree with their belief/choice/decision and want to assert our
+            own freedom of choice then we must openly talk with them and explain them that why I am right,
+            why your decision is more beneficial than mine, why I must do it. Explain them everything. The moment they
+            have understood and accepted that yes, your decision seems to be more right/correct/perfect than mine,
+            they will give you the consent to follow your choice. You must succeed in explaining what you beleive, have
+            a debate full of understanding and flexibility. Turning insolent and without paying heed to their decree,
+            if we follow our choices stubbornly we may hurt them. We may not be having a sound relationship with them.
+            Relationships are very important part of life, we must learn how to walk, keeping both the aspects
+            ( relationships and our own choices ) balanced. We must sit, and have a talk. Share each other's beliefs.
+            What you think on it, what they think on it. Be always soft and sweet in your voice ( the vibrations you
+            send via your thoughts, make noticeable impact on other person ).
+            Don't try to make this decision making process stiff and one-sided. Be open for any correction. Neither he
+            is going to be always right nor you. Walk with mutual understanding. Keeping relationships thriving is a art
+            and we must learn them.
+            The problem which you have entailed in your question is every second person's issue. If you and everyone
+            will learn this art, then balancing our personal needs/choices and needs/choice of opposite relationship
+            will always go smooth.
+            In childhood we are forced with parent's choices, in adulthood we are forced with our partner's choices and
+            if we have not learnt how to follow our choices and at the same moment keeping our relationship happy,
+            satisfied and amenable to our choices, then we will always remain frustrated.
+        </div>
+        <div th:if="${fourth=='colleagues1'}">
+            The best way to deal with a coworker who is actively ignoring you is to have a private conversation with
+            them. Explain that you are feeling ignored by them in a polite and respectful way. Listen to their
+            grievances if they have any.
+            Clear and honest communication is essential for teamwork.
+        </div>
+        <div th:if="${fourth=='colleagues2'}">
+            Assume your rightful place on the team and act like a valued contributor. Don’t let on that you feel like an
+            outsider. Enthusiastically greet aloof coworkers the same way you do nicer colleagues. Act like you you’re
+            happy to see everybody and ask coworkers how they’re doing.
+            Compliment them on their work, agree with good suggestions they make at meetings and admire their
+            proficiency in areas where they shine.
+            Be patient as you wait for them to come around. Workplace alliances can be like shifting sand; you never
+            know who might end up being a trusted friend even if you didn't start off on a good note. Trust and
+            friendship take time to earn and build, particularly in formal environments with little opportunity for
+            mingling.
+        </div>
+        <div th:if="${fourth=='colleagues3'}">
+            It can be frustrating and upsetting to be told what to do or have someone take over for you. But it's
+            important that you stay in control of your temper. Bossy people thrive on getting a strong reaction that
+            allows them to be a victim: "I was only trying to help, and they came after me like I'd done something
+            wrong!"
+            To manage your bossy colleague you're going to have to say something direct and assertive. Take a calm,
+            professional tone and keep your discussion short and succinct. Avoid making a scene and make sure you stay
+            calm and respectful. You might want to explain how their behavior is affecting you, avoiding blaming and
+            sticking to "I" statements, and let them know you want it to stop.
+            Remember that your coworker's behavior is not about you, and don't allow their words or behavior to affect
+            you personally. It's all about them wanting to feel important and in control--you're just the person who
+            happens to be within reach.
+        </div>
+        <div th:if="${fourth=='friends1'}">
+            Maintaining friendships can get harder as we get older. Our lives become busier. Some people select
+            partners, get married, have kids, build careers, buy homes, move to new places, and so on. With all of those
+            life changes come responsibilities and obligations that can take over our lives to the point where we can't
+            make time for the same fun things we used to do with our friends, leaving you to perhaps wonder if your
+            friends like you. You may feel that fun and adventurous times with your friends, like movie marathons and
+            spontaneous vacations, are long gone; however, you can still find new ways to connect with old friends.
+        </div>
+        <div th:if="${fourth=='friends2'}">
+            The reason friends don’t value you might be because of either one of two things.
+            Firstly, it might be that you are not too much fun to be around. Maybe you don’t have a lot of positive
+            energy, and might be buzzing people down. Maybe you don’t have anything special to contribute to the group
+            or any of the individuals. You may also be insecure - maybe you are trying too hard. People can usually tell
+            if you are insecure or doubting yourself, and that rubs off on them (a bad vibe). My advice here would be to
+            find new friends, because if you feel like you need to always do more or adapt or perform to them and their
+            taste, you have made a huge mistake - remember, friends are people who are supposed to care about you, to
+            cherish you, being yourself. People who need you to change to fit in with them are (really, always) not
+            worth the trouble, as they are usually hollow shells themselves. So go on, and find yourself some others.
+            *However, remember to allow yourself to be spontaneous too. If that is difficult, make an effort to try it.
+            It’s great. I myself have had some of the most fun and exhilarating experiences in my life after going out
+            when I really don’t want to, or meeting people I preemptively judge to “not be my type”. Go out, live a
+            little!
+            Secondly, it might be that they are jealous of you. You might not believe it, but a lot of times, this is
+            true. Jealous friends are false people who do not mean anything good. They would go to great lengths to
+            invite you along and make you feel like being part of the group, even sometimes placing you at the centre,
+            seemingly displaying you as someone indisposable and valuable. But behind your back, they cannot stand you.
+            This might be the case when you are always second-guessing where you stand, or when they “accidentally” not
+            invite you, or do things without you. So if this is your circumstance, what should you do? Leave them and
+            find yourself people who appreciate you. That may take months… but don’t worry, it will be worth it.
+        </div>
+        <div th:if="${fourth=='friends3'}">
+            Bring out your inner actor and pretend like you are involved in the conversation. If everyone looks serious,
+            make your best I-am-paying-attention face. If someone is gesticulating passionately, look like you’re
+            interested. Watch how your friends are reacting and play off of them.
+            Before you know it, someone will change the subject.
+            So, you’re feeling uncomfortable, eh? Say everyone is discussing cricket and you don’t know cricket that
+            well. When your friend is talking about the match last night and you practically want to kill yourself
+            because you know nothing about it, change the subject as soon as you can.
+            Before you know it, conversation will turn to a topic you really quite enjoy!
+            “Guys, this is really interesting... well, not really. Can we please talk about something else? Next round
+            is on me” You know this group of people, so as long as you’re respectful of their interests an opinions,
+            they’ll likely understand that you’d rather speak about something to which everyone can contribute.
+            No one likes to feel left out, so people will likely accommodate once they realize they are making someone
+            feel left out.
+        </div>
+        <div th:if="${fourth=='partner1'}">
+            None of us like fighting with our partner; it’s awful. The yelling, the stomping around, or even the classic
+            retreat into the bedroom in hopes that they will come find you.
+            While these fights, and the countless others, are messy, and terrible in their own right, they do speak to
+            something. The couple has passion. They care about the other person enough to fight with them. And while it
+            is a twisted way of showing love, there is an underlying belief in the relationship, and hope for a better
+            future.
+            When you start to see that your partner has stopped engaging with you and in general just “doesn’t care
+            anymore,” you should start to wonder if they’ve fallen out love with you. Because, what’s the point of
+            fighting if they’ve given up?
+        </div>
+        <div th:if="${fourth=='partner2'}">
+            One of the signs that your partner doesn't value is that he/she never puts effort into the relationship. No
+            matter how hard you try, your partner will be least interested in strengthening your relationship. He/she
+            would never care to do new things to keep the spark alive in the relationship. Not only this, but your
+            partner would never respect the efforts made by you. Even if you walk an extra mile, he/she would never care
+            to acknowledge the same.
+        </div>
+        <div th:if="${fourth=='partner3'}">
+            No human being is ever ‘too good’ for another.
+            But when have human beings ever needed a legitimate excuse for feeling the way we do?
+            We’re irrational by nature, and we’re the result of all the experiences that shape us.
+            And it’s important to consider the root causes of these irrational behaviors and thoughts in order to be
+            able to work on them.
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
